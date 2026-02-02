@@ -34,7 +34,7 @@ export function AssessmentEngine() {
     } else {
       setStatus("analyzing")
       // 计算得分逻辑
-      const scores = { A: 0, B: 0, C: 0, D: 0, E: 0 }
+      const scores: any = { A: 0, B: 0, C: 0, D: 0, E: 0 }
       newAnswers.forEach((ans) => {
         const q = questions.find(item => item.id === ans.questionId)
         const weight = q.options[ans.optionIndex].score
