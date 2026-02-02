@@ -6,10 +6,10 @@ import { Sparkles, Loader2 } from "lucide-react"
 import { ProfessionalReport } from "./professional-report"
 
 export function AssessmentEngine() {
-  const [questions, setQuestions] = useState([])
+  const [questions, setQuestions] = useState<any[]>([])
   const [resultsConfig, setResultsConfig] = useState(null)
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [answers, setAnswers] = useState([])
+  const [answers, setAnswers] = useState<any[]>([])
   const [status, setStatus] = useState("loading") // loading, quiz, analyzing, finished
   const [finalData, setFinalData] = useState(null)
 
