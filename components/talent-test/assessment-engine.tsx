@@ -37,7 +37,7 @@ export function AssessmentEngine() {
       const scores: any = { A: 0, B: 0, C: 0, D: 0, E: 0 }
       newAnswers.forEach((ans) => {
         const q = questions.find(item => item.id === ans.questionId)
-        const weight = q.options[ans.optionIndex].score
+        Object.keys(weight).forEach(dim => (scores as any)[dim] += (weight as any)[dim])
         Object.keys(weight).forEach(dim => scores[dim] += weight[dim])
       })
       const topDim = Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b)
