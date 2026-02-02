@@ -34,13 +34,21 @@ export function AssessmentEngine() {
     } else {
       setStatus("analyzing")
       // 计算得分逻辑
-      const scores: any = { A: 0, B: 0, C: 0, D: 0, E: 0 }
-      newAnswers.forEach((ans) => {
-        const q = questions.find(item => item.id === ans.questionId)
-        Object.keys(weight).forEach(dim => (scores as any)[dim] += (weight as any)[dim])
-        Object.keys(weight).forEach(dim => scores[dim] += weight[dim])
-      })
-      const topDim = Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b)
+    const scores: any = { A: 0, B: 0, C: 0, D: 0, E: 0 }
+    
+    newAnswers.forEach((ans) => {
+      const q = questions.find(item => item.id === ans.questionId)
+      if (q && q.options && q.options[ans.optionIndex]) {
+        const weight = q.options[ans.optionIndex].score
+        if (weight) {
+          Object.keys(weight).forEach(dim => {
+            scores[dim] = (scores[dim] || 0) + (weight[dim] || 0)
+          })
+        }
+      }
+    })
+
+    const topDim = Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b)
       
       // 模拟 AI 分析仪式感
       setTimeout(() => {
