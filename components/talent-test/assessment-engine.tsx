@@ -7,11 +7,11 @@ import { ProfessionalReport } from "./professional-report"
 
 export function AssessmentEngine() {
   const [questions, setQuestions] = useState<any[]>([])
-  const [resultsConfig, setResultsConfig] = useState(null)
+  const [resultsConfig, setResultsConfig] = useState<any>(null)
   const [currentIndex, setCurrentIndex] = useState(0)
   const [answers, setAnswers] = useState<any[]>([])
   const [status, setStatus] = useState("loading") // loading, quiz, analyzing, finished
-  const [finalData, setFinalData] = useState(null)
+  const [finalData, setFinalData] = useState<any>(null)
 
   useEffect(() => {
     Promise.all([
