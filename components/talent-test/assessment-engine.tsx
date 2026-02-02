@@ -85,7 +85,7 @@ export function AssessmentEngine() {
                   {questions[currentIndex]?.question}
                 </h2>
                 <div className="grid gap-4">
-                  {questions[currentIndex]?.options.map((opt, idx) => (
+                  {questions[currentIndex]?.options.map((opt: any, idx: number) => (
                     <button
                       key={idx}
                       onClick={() => handleAnswer(idx)}
